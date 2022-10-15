@@ -19,13 +19,12 @@ contract KittyInterface {
 
 contract ZombieFeeding is ZombieFactory {
 
-
   KittyInterface kittyContract;
 
-  function setKittyContractAddress(address _address) external {
+  // Modifiez cette fonction :
+  function setKittyContractAddress(address _address) external onlyOwner {
     kittyContract = KittyInterface(_address);
   }
-
 
   function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
     require(msg.sender == zombieToOwner[_zombieId]);
